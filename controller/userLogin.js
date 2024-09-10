@@ -1,6 +1,6 @@
 const userModel = require ('../models/userModel');
 const bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken');
 const userLogin = async (req, res) => {
    try{
 
@@ -10,8 +10,29 @@ const userLogin = async (req, res) => {
        if(user){
          
         const match = await bcrypt.compare(password, user.password);
-        if(match) console.log("password matched",match);
-        else console.log("not matched");
+
+        if(match){
+         const data = {
+           id: user._id,
+           email:user.email
+         }
+         const token = jwt.sign({
+            data:data,
+          }, process.env.TOKEN_SECRET_KEY, { expiresIn: '1h' });
+
+          res.cookie('auth_token', token, {
+            httpOnly: true,    // Prevents client-side JavaScript from accessing the cookie
+            secure: true,      // Ensures the cookie is sent over HTTPS
+            maxAge: 3600000,   // Cookie expiration (1 hour)
+          }).json({
+             message: "login success",
+             error:false,
+             success: true,
+             body:{}
+          });
+
+        }
+        else throw new Error("Wrong password..");
        }
        else{
          throw new Error("User Dosent exist..");
