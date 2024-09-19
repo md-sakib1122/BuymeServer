@@ -3,10 +3,10 @@ const bcrypt = require('bcrypt');
 
 const userSignup = async (req, res) => {
     try {
-        let { email, password, name } = req.body;
+        let { email, password, name,proPic } = req.body;
         
         const user = await userModel.findOne({ email: email});
-          
+          console.log(req.body);
         if(user) {
           throw new Error("User Already Exists");
         }
@@ -29,7 +29,8 @@ const userSignup = async (req, res) => {
         const userData = new userModel({
             email,
             password: hashedPassword,  // Use hashed password
-            name
+            name,
+            proPic
         });
 
         // Save user data
