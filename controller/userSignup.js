@@ -30,7 +30,8 @@ const userSignup = async (req, res) => {
             email,
             password: hashedPassword,  // Use hashed password
             name,
-            proPic
+            proPic,
+            role: 'GENERAL', // default user role
         });
 
         // Save user data

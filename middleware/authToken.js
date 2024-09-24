@@ -15,7 +15,7 @@ const authToken = async (req, res, next) => {
 
         // Verify the token
         const decoded = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
-        req.user = decoded;
+        req.user = decoded.data;
         next(); // Call next() only if token is valid
     } catch (err) {
         return res.json({
