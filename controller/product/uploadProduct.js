@@ -1,5 +1,5 @@
-const productModel = require('../models/productModel') // Adjust the path accordingly
-const loggedinUserDetails = require('../helpers/loggedinUserDetails'); 
+const productModel = require('../../models/productModel') // Adjust the path accordingly
+const loggedinUserDetails = require('../../helpers/loggedinUserDetails'); 
 
 // Create a new product
 const uploadProduct = async (req, res) => {
@@ -28,7 +28,7 @@ const uploadProduct = async (req, res) => {
             res.status(201).json({
                 success: true,
                 message: 'Product created successfully',
-                error: true,
+                error: false,
                 data: newProduct,
             });
         }

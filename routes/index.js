@@ -6,7 +6,9 @@ const authToken = require('../middleware/authToken');
 const userLogout = require('../controller/userLogout');
 const fetchAllusers = require('../controller/fetchAllUsers');
 const userRoleUpdate = require('../controller/userRoleUpdate');
-const uploadProduct = require('../controller/uploadProduct');
+const uploadProduct = require('../controller/product/uploadProduct'); 
+const fetchAllProducts = require('../controller/product/fetchAllProducts');
+const updatedProduct = require('../controller/product/updateProduct');
 const router = express.Router();
 
 router.post('/signup',userSignup);
@@ -16,4 +18,7 @@ router.get('/logout', userLogout);
 router.get('/all-users',authToken,fetchAllusers);
 router.post('/user-role-update',authToken,userRoleUpdate);
 router.post('/upload-product', authToken,uploadProduct);
+router.get('/all-product',authToken,fetchAllProducts);
+router.put('/update-product',authToken,updatedProduct);
+
 module.exports = router;
