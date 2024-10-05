@@ -9,6 +9,8 @@ const userRoleUpdate = require('../controller/userRoleUpdate');
 const uploadProduct = require('../controller/product/uploadProduct'); 
 const fetchAllProducts = require('../controller/product/fetchAllProducts');
 const updatedProduct = require('../controller/product/updateProduct');
+const fetchCategoryProducts = require('../controller/product/fetchCategoryProducts');
+
 const router = express.Router();
 
 router.post('/signup',userSignup);
@@ -20,5 +22,5 @@ router.post('/user-role-update',authToken,userRoleUpdate);
 router.post('/upload-product', authToken,uploadProduct);
 router.get('/all-product',authToken,fetchAllProducts);
 router.put('/update-product',authToken,updatedProduct);
-
+router.post('/category-products',fetchCategoryProducts);
 module.exports = router;
