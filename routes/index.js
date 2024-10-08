@@ -11,6 +11,8 @@ const fetchAllProducts = require('../controller/product/fetchAllProducts');
 const updatedProduct = require('../controller/product/updateProduct');
 const fetchCategoryProducts = require('../controller/product/fetchCategoryProducts');
 const fetchProductDetail = require('../controller/product/fetchProductDetails');
+const addToCart = require('../controller/addToCart');
+
 const router = express.Router();
 
 router.post('/signup',userSignup);
@@ -24,4 +26,5 @@ router.get('/all-product',authToken,fetchAllProducts);
 router.put('/update-product',authToken,updatedProduct);
 router.post('/category-products',fetchCategoryProducts);
 router.post('/fetch-products',fetchProductDetail);
+router.post('/addTo-cart',authToken, addToCart);
 module.exports = router;
