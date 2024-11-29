@@ -9,7 +9,9 @@ const authToken = async (req, res, next) => {
                 success: false,
                 message: 'User not logged in',
                 error: true,
-                data: {}
+                data: {
+                    user: 'notloggedin'
+                }
             });
         }
 

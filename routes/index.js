@@ -12,6 +12,9 @@ const updatedProduct = require('../controller/product/updateProduct');
 const fetchCategoryProducts = require('../controller/product/fetchCategoryProducts');
 const fetchProductDetail = require('../controller/product/fetchProductDetails');
 const addToCart = require('../controller/addToCart');
+const cartProductCount = require('../controller/cartProductCount');
+const fetchAllCartProducts = require('../controller/fetchAllCartProducts');
+const deleteCartProduct = require('../controller/deleteCartProduct');
 
 const router = express.Router();
 
@@ -27,4 +30,7 @@ router.put('/update-product',authToken,updatedProduct);
 router.post('/category-products',fetchCategoryProducts);
 router.post('/fetch-products',fetchProductDetail);
 router.post('/addTo-cart',authToken, addToCart);
+router.get('/cart-product-count',authToken,cartProductCount);
+router.get('/all-cart-products',authToken,fetchAllCartProducts);
+router.delete('/delete-cart',authToken,deleteCartProduct);
 module.exports = router;

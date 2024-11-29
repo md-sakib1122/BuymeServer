@@ -15,7 +15,7 @@ app.use(cookieParser(process.env.TOKEN_SECRET_KEY));
 app.use('/api',router);
 
 
-const PORT = 8080 || process.env.PORT;
+const PORT = process.env.PORT ||8080;
 
  connectDB().then(() => {     // If database is connected succesfully then only server is started
     app.listen(PORT, ()=>{
