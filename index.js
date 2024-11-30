@@ -7,15 +7,16 @@ var cookieParser = require('cookie-parser')
 
 const app = express();
 app.use(cors({
-   origin : process.env.FRONTEND_URL,
-   credentials:true,
-}));
+   origin: process.env.FRONTEND_URL,
+   credentials: true, 
+   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'] // Allow credentials (cookies, headers)
+ }));
 app.use(express.json());
 app.use(cookieParser(process.env.TOKEN_SECRET_KEY));
 app.use('/api',router);
 
 
-const PORT = process.env.PORT ||8080;
+const PORT = process.env.PORT || 8080;
 
  connectDB().then(() => {     // If database is connected succesfully then only server is started
     app.listen(PORT, ()=>{
