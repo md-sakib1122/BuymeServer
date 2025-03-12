@@ -10,7 +10,7 @@ app.use(cors({
    origin: process.env.FRONTEND_URL,
    credentials: true, 
    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'] // Allow credentials (cookies, headers)
- }));
+ }));   
 app.use(express.json());
 app.use(cookieParser(process.env.TOKEN_SECRET_KEY));
 app.use('/api',router);
@@ -25,4 +25,3 @@ const PORT = process.env.PORT || 8080;
  }).catch((err) => {
     console.log(err.message);
  });
-

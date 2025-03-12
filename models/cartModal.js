@@ -1,16 +1,28 @@
 const mongoose = require('mongoose');
 
-const cartSechema =new mongoose.Schema({
-     productId: {
-        ref:'Product',
-        type: String,
-     },
-     quantity: Number,
-     userId : String,
-},{
-    timestamps: true,
+const cartSchema = new mongoose.Schema({
+    productId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product',
+        required: true, // Make productId required
+    },
+    quantity: {
+        type: Number,
+        required: true,
+        min: 1, // Ensure the quantity is always a positive number
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true, 
+    }
+}, {
+    timestamps: true, 
 });
 
-const cartModel = mongoose.model('cart',cartSechema);
+
+cartSchema.index({ userId: 1 });
+
+const cartModel = mongoose.model('Cart', cartSchema);
 
 module.exports = cartModel;
