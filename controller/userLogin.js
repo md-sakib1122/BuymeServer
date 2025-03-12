@@ -42,7 +42,8 @@ const userLogin = async (req, res) => {
         // Set the token in a secure cookie
         res.cookie('auth_token', token, {
             httpOnly: true,  // Prevents client-side JavaScript from accessing the cookie
-            secure: process.env.NODE_ENV === 'production', // Ensure cookie is secure in production environment
+            secure: process.env.NODE_ENV === 'production', // Ensurecookie is secure in production environment
+            sameSite: 'None',
             maxAge: 3600000, // Cookie expiration (1 hour)
         }).json({
             message: "Login successful",
