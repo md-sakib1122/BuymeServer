@@ -6,7 +6,6 @@ const cartProductCount = async (req, res) => {
 
         // Get the count of documents for the user
         const count = await cartModal.countDocuments({ userId: userid });
-
         return res.status(200).json({
             data: { count },
             success: true,

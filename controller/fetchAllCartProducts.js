@@ -8,7 +8,7 @@ const fetchAllCartProducts = async (req, res) => {
         const cart = await cartModal.find({ userId }).populate("productId");
 
         // If no products are found in the cart
-        if (!cart || cart.length === 0) {
+        if (!cart) {
             return res.status(404).json({
                 message: "No products found in the cart",
                 success: false,
