@@ -51,7 +51,7 @@ git clone https://github.com/md-sakib1122/BuymeServer.git
 npm install
 ```
 
-###3️⃣ Configure Environment Variables
+### 3️⃣ Configure Environment Variables
 ```Create a .env file inside the backend/ directory and add:
 
 MONGODB_URI =your_mongodb_connection_string
@@ -61,7 +61,7 @@ PORT = 3000
 NODE_ENV = production
 ```
 
-###4️⃣ Start the Server
+### 4️⃣ Start the Server
 ```bash
 node index.js
 
