@@ -44,6 +44,7 @@ Ensure you have the following installed:
 #### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/md-sakib1122/BuymeServer.git
+cd buymeserver
 ```
 
 ### 2️⃣ Install Dependencies
